@@ -4,23 +4,23 @@ import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import Footer from './components/Footer';
-import FloatingBackground from './components/FloatingBackground'; /* <-- IMPORT IT HERE */
+import FloatingBackground from './components/FloatingBackground';
 import './index.css';
 
 const App = () => {
   const navItems = [
     {
       label: "About",
-      bgColor: "#1a2a6c",
+      bgColor: "#1a2a6c", // TIMA Primary Blue
       textColor: "#fff",
       links: [
         { label: "Conference Details", href: "#hero" },
-        { label: "Author Guidelines", href: "#about" }
+        { label: "Advisory Committee", href: "#about" } // Changed to scroll to about section
       ]
     },
     {
       label: "Information", 
-      bgColor: "#1e3a8a",
+      bgColor: "#1e3a8a", // Slightly lighter blue for depth
       textColor: "#fff",
       links: [
         { label: "Key Dates", href: "#about" },
@@ -29,11 +29,11 @@ const App = () => {
     },
     {
       label: "Contact",
-      bgColor: "#b21f1f",
+      bgColor: "#b21f1f", // TIMA Accent Red
       textColor: "#fff",
       links: [
         { label: "Submit Paper", href: "#hero" },
-        { label: "Organizing Secretary", href: "#contact" },
+        { label: "Registration", href: "#about" },
         { label: "Email Us", href: "mailto:ie.tima2027@gmail.com" }
       ]
     }
@@ -41,9 +41,10 @@ const App = () => {
 
   return (
     <div className="app-container">
-      {/* PLACE IT RIGHT HERE AT THE TOP */}
+      {/* 3D Animated Background - Stays behind everything */}
       <FloatingBackground /> 
       
+      {/* GSAP Animated Dropdown Navigation */}
       <CardNav
         items={navItems}
         baseColor="#ffffff"
@@ -53,6 +54,7 @@ const App = () => {
         ease="power3.out"
       />
       
+      {/* Your Separated Layout Sections */}
       <Header />
       <HeroSection />
       <AboutSection />
