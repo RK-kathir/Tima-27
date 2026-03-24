@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/tima-2027/', 
+  base: '/Tima-2027/', 
 })
