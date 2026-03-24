@@ -16,11 +16,11 @@ const App = () => {
 
   return (
     <div className="app-container">
-      {/* 3D Background */}
+      {/* 3D Background - Stays permanently behind the site */}
       <FloatingBackground /> 
       
-      {/* Content Wrapper ensures it sits on top of the 3D background safely */}
-      <div style={{ position: 'relative', zIndex: 10 }}>
+      {/* CRITICAL: This wrapper forces your text and images to sit ON TOP of the animation */}
+      <div className="content-wrapper">
         <CardNav items={navItems} baseColor="#ffffff" menuColor="#1a2a6c" buttonBgColor="#b21f1f" buttonTextColor="#fff" ease="power3.out" />
         <Header />
         <HeroSection />
