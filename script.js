@@ -1,19 +1,35 @@
-// Initialize Animate On Scroll (AOS)
-AOS.init({
-    offset: 120, // offset (in px) from the original trigger point
-    delay: 0, // values from 0 to 3000, with step 50ms
-    duration: 800, // values from 0 to 3000, with step 50ms
-    easing: 'ease-in-out', // default easing for AOS animations
-    once: false, // whether animation should happen only once - while scrolling down
-});
+// This script adds an interactive shadow and slight size change to the navbar when scrolling
+document.addEventListener("DOMContentLoaded", function() {
+    const navbar = document.getElementById("navbar");
 
-// Simple Navbar color change on scroll
-window.onscroll = function() {
-    let nav = document.getElementById('navbar');
-    if (window.pageYOffset > 100) {
-        nav.style.background = "#ffffff";
-        nav.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
-    } else {
-        nav.style.boxShadow = "none";
-    }
-};
+    window.addEventListener("scroll", function() {
+        if (window.scrollY > 50) {
+            // When user scrolls down
+            navbar.style.padding = "0.5rem 1rem";
+            navbar.style.boxShadow = "0 4px 15px rgba(0,0,0,0.2)";
+        } else {
+            // When user is at the very top
+            navbar.style.padding = "1rem";
+            navbar.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
+        }
+    });
+
+    // Smooth scrolling for all navigation links
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            // Only apply if the link goes to an ID on the same page
+            if (this.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 60, // offset for the sticky navbar
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+});
