@@ -4,6 +4,7 @@ import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import Footer from './components/Footer';
+import FloatingBackground from './components/FloatingBackground'; /* <-- IMPORT IT HERE */
 import './index.css';
 
 const App = () => {
@@ -40,6 +41,9 @@ const App = () => {
 
   return (
     <div className="app-container">
+      {/* PLACE IT RIGHT HERE AT THE TOP */}
+      <FloatingBackground /> 
+      
       <CardNav
         items={navItems}
         baseColor="#ffffff"
