@@ -14,25 +14,26 @@ const FloatingBackground = () => {
   return (
     <div style={{
       position: 'fixed',
-      top: 0, left: 0, width: '100vw', height: '100vh',
-      zIndex: 0, 
+      top: 0,
+      left: 0,
+      width: '100vw',
+      height: '100vh',
+      zIndex: 0, /* FIX: Changed from -1 to 0 so it isn't hidden by the browser background */
       overflow: 'hidden',
       pointerEvents: 'none', 
       backgroundColor: '#f8fafc' 
     }}>
       <FloatingLines
         linesGradient={["#1a2a6c", "#b21f1f", "#fdbb2d"]} 
-        // OPTIMIZATION: Drastically reduced line count
-        lineCount={isMobile ? 2 : 4} 
-        lineDistance={isMobile ? 12 : 8}
-        // OPTIMIZATION: Slowed down the math
-        animationSpeed={isMobile ? 0.3 : 0.6} 
+        lineCount={isMobile ? 3 : 6}
+        lineDistance={isMobile ? 8 : 5}
+        animationSpeed={isMobile ? 0.6 : 1} 
         interactive={!isMobile} 
-        // OPTIMIZATION: Disabled parallax completely to save battery
-        parallax={false} 
+        parallax={!isMobile}
         bendRadius={5}
         bendStrength={-0.5}
         mouseDamping={0.05}
+        parallaxStrength={1}
       />
     </div>
   );
