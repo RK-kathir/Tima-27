@@ -1,42 +1,13 @@
-import React, { useLayoutEffect } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import React from 'react';
 import CardNav from './components/CardNav';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import Footer from './components/Footer';
 import FloatingBackground from './components/FloatingBackground';
-import SmoothScroll from './components/SmoothScroll';
-import CustomCursor from './components/CustomCursor';
 import './index.css';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const App = () => {
-  // Adds fade-in animations as you scroll down the page
-  useLayoutEffect(() => {
-    const sections = document.querySelectorAll('.animate-on-scroll');
-    
-    sections.forEach((section) => {
-      gsap.fromTo(section, 
-        { opacity: 0, y: 50 }, 
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 1, 
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 85%", // Triggers when the top of the section hits 85% down the viewport
-            toggleActions: "play none none reverse"
-          }
-        }
-      );
-    });
-  }, []);
-
   const navItems = [
     { label: "About", bgColor: "#1a2a6c", textColor: "#fff", links: [{ label: "Conference Details", href: "#hero" }, { label: "Advisory Committee", href: "#about" }] },
     { label: "Information", bgColor: "#1e3a8a", textColor: "#fff", links: [{ label: "Key Dates", href: "#about" }, { label: "Gallery & Past Events", href: "#about" }] },
@@ -44,28 +15,19 @@ const App = () => {
   ];
 
   return (
-    <SmoothScroll>
-      <div className="app-container">
-        <CustomCursor />
-        <FloatingBackground /> 
-        
-        <div style={{ position: 'relative', zIndex: 10 }}>
-          <CardNav items={navItems} baseColor="#ffffff" menuColor="#1a2a6c" buttonBgColor="#b21f1f" buttonTextColor="#fff" ease="power3.out" />
-          
-          <Header />
-          
-          {/* Added 'animate-on-scroll' class for GSAP triggers */}
-          <div className="animate-on-scroll">
-            <HeroSection />
-          </div>
-          <div className="animate-on-scroll">
-            <AboutSection />
-          </div>
-          
-          <Footer />
-        </div>
+    <div className="app-container">
+      {/* 3D Background */}
+      <FloatingBackground /> 
+      
+      {/* Content Wrapper ensures it sits on top of the 3D background safely */}
+      <div style={{ position: 'relative', zIndex: 10 }}>
+        <CardNav items={navItems} baseColor="#ffffff" menuColor="#1a2a6c" buttonBgColor="#b21f1f" buttonTextColor="#fff" ease="power3.out" />
+        <Header />
+        <HeroSection />
+        <AboutSection />
+        <Footer />
       </div>
-    </SmoothScroll>
+    </div>
   );
 };
 
