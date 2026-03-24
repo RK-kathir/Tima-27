@@ -1,7 +1,7 @@
 :root {
   --primary: #1a2a6c;
   --secondary: #0052D4;
-  --light: #f8fafc;
+  --light: rgba(248, 250, 252, 0.5); /* Made slightly transparent */
   --text: #334155;
   --accent-red: #b21f1f;
 }
@@ -11,18 +11,19 @@ body {
   margin: 0;
   color: var(--text);
   line-height: 1.6;
-  /* 1. FIX: Changed to transparent so the animation shows through */
   background-color: transparent; 
   scroll-behavior: smooth;
 }
 
+/* 1. Transparent Header with Frosted Glass Blur */
 .main-header {
-  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background: linear-gradient(135deg, rgba(26, 42, 108, 0.85), rgba(178, 31, 31, 0.85), rgba(253, 187, 45, 0.85));
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
   color: white;
   padding: 10rem 1.25rem 3.75rem;
   text-align: center;
+  backdrop-filter: blur(6px); /* Blurs the lines directly behind the header */
 }
 
 @keyframes gradientBG {
@@ -39,22 +40,43 @@ body {
   align-items: center;
   justify-content: space-around;
   padding: 3rem 10%;
-  /* 2. FIX: Removed 'background: white;' so the 3D lines are visible behind the text */
   background: transparent; 
   gap: 2rem;
 }
 
 .hero-text { flex: 1; }
 .hero-img { flex: 1; text-align: right; }
-.hero-img img { width: 100%; max-width: 35rem; border-radius: 0.6rem; box-shadow: 1.25rem 1.25rem 0px var(--primary); }
+.hero-img img { width: 100%; max-width: 35rem; border-radius: 0.6rem; box-shadow: 1.25rem 1.25rem 0px rgba(26, 42, 108, 0.8); }
 
 section { padding: 3rem 10%; }
-.bg-light { background: #edf2f7; }
+
+/* 2. Transparent About Section Background */
+.bg-light { 
+  background: rgba(237, 242, 247, 0.4); 
+}
 
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.25rem; }
-.card { background: white; padding: 1.25rem; border-radius: 0.5rem; border-left: 0.3rem solid var(--primary); box-shadow: 0 0.25rem 0.4rem rgba(0,0,0,0.05); }
 
-footer { background: #1e293b; color: white; padding: 2.5rem 10%; text-align: center; }
+/* 3. Frosted Glass Cards */
+.card { 
+  background: rgba(255, 255, 255, 0.75); /* 75% opaque white */
+  padding: 1.25rem; 
+  border-radius: 0.5rem; 
+  border-left: 0.3rem solid var(--primary); 
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05); 
+  backdrop-filter: blur(8px); /* Frosted glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Gives it a glossy edge */
+}
+
+/* 4. Semi-Transparent Footer */
+footer { 
+  background: rgba(30, 41, 59, 0.9); /* 90% opaque dark blue/grey */
+  color: white; 
+  padding: 2.5rem 10%; 
+  text-align: center; 
+  backdrop-filter: blur(10px);
+}
+
 .btn { background: var(--accent-red); color: white; padding: 0.6rem 1.5rem; border-radius: 0.3rem; text-decoration: none; display: inline-block; margin-top: 1.25rem; font-weight: 600; transition: opacity 0.3s; }
 .btn:hover { opacity: 0.9; }
 .footer-divider { opacity: 0.2; margin: 1.25rem 0; }
@@ -63,5 +85,5 @@ footer { background: #1e293b; color: white; padding: 2.5rem 10%; text-align: cen
 
 @media (max-width: 48em) {
   .hero { flex-direction: column; text-align: center; }
-  .hero-img img { box-shadow: 0.5rem 0.5rem 0px var(--primary); }
+  .hero-img img { box-shadow: 0.5rem 0.5rem 0px rgba(26, 42, 108, 0.8); }
 }
