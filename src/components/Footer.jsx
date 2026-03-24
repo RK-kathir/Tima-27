@@ -9,7 +9,6 @@ const Footer = () => {
       <p>Phone: +91 94893 07781</p>
       <hr className="footer-divider" />
       <p>&copy; 2027 MIT Campus, Anna University. All Rights Reserved.</p>
-      <p className="signature">BUILT WITH <span>&hearts;</span> BY KATHIRVEL R</p>
     </footer>
   );
 };
