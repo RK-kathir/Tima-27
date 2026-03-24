@@ -11,21 +11,25 @@ body {
   margin: 0;
   color: var(--text);
   line-height: 1.6;
-  background-color: transparent; 
+  background-color: transparent; /* CRITICAL: Allows 3D to show through */
   scroll-behavior: smooth;
-  cursor: auto !important; /* Forces normal mouse pointer */
+  cursor: auto !important;
 }
 
-/* Header Centering Fix */
+/* Forces the website content to safely float above the 3D canvas */
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+/* Header Centering and Frosted Glass */
 .main-header {
   background: linear-gradient(135deg, rgba(26, 42, 108, 0.85), rgba(178, 31, 31, 0.85), rgba(253, 187, 45, 0.85));
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
   color: white;
   padding: 10rem 1.25rem 3.75rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
   backdrop-filter: blur(6px); 
 }
@@ -38,13 +42,13 @@ body {
 
 .header-content h1 { font-size: 2.5rem; margin-bottom: 0.6rem; }
 
-/* Hero Layout Fix */
+/* Hero Section */
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-around;
   padding: 3rem 10%;
-  background: transparent; 
+  background: transparent; /* CRITICAL: Shows the lines behind the text */
   gap: 2rem;
 }
 
@@ -56,6 +60,7 @@ section { padding: 3rem 10%; }
 .bg-light { background: rgba(237, 242, 247, 0.4); }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.25rem; }
 
+/* Frosted Glass Cards */
 .card { 
   background: rgba(255, 255, 255, 0.75); 
   padding: 1.25rem; 
@@ -66,6 +71,7 @@ section { padding: 3rem 10%; }
   border: 1px solid rgba(255, 255, 255, 0.3); 
 }
 
+/* Footer */
 footer { 
   background: rgba(30, 41, 59, 0.9); 
   color: white; 
