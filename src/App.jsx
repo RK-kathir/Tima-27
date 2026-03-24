@@ -9,19 +9,53 @@ import './index.css';
 
 const App = () => {
   const navItems = [
-    { label: "About", bgColor: "#1a2a6c", textColor: "#fff", links: [{ label: "Conference Details", href: "#hero" }, { label: "Advisory Committee", href: "#about" }] },
-    { label: "Information", bgColor: "#1e3a8a", textColor: "#fff", links: [{ label: "Key Dates", href: "#about" }, { label: "Gallery & Past Events", href: "#about" }] },
-    { label: "Contact", bgColor: "#b21f1f", textColor: "#fff", links: [{ label: "Submit Paper", href: "#hero" }, { label: "Registration", href: "#about" }, { label: "Email Us", href: "mailto:ie.tima2027@gmail.com" }] }
+    {
+      label: "About",
+      bgColor: "#1a2a6c", 
+      textColor: "#fff",
+      links: [
+        { label: "Conference Details", href: "#hero" },
+        { label: "Advisory Committee", href: "#about" } 
+      ]
+    },
+    {
+      label: "Information", 
+      bgColor: "#1e3a8a", 
+      textColor: "#fff",
+      links: [
+        { label: "Key Dates", href: "#about" },
+        { label: "Gallery & Past Events", href: "#about" }
+      ]
+    },
+    {
+      label: "Contact",
+      bgColor: "#b21f1f", 
+      textColor: "#fff",
+      links: [
+        { label: "Submit Paper", href: "#hero" },
+        { label: "Registration", href: "#about" },
+        { label: "Email Us", href: "mailto:ie.tima2027@gmail.com" }
+      ]
+    }
   ];
 
   return (
     <div className="app-container">
-      {/* 3D Background - Stays permanently behind the site */}
+      {/* 3D Background */}
       <FloatingBackground /> 
       
-      {/* CRITICAL: This wrapper forces your text and images to sit ON TOP of the animation */}
-      <div className="content-wrapper">
-        <CardNav items={navItems} baseColor="#ffffff" menuColor="#1a2a6c" buttonBgColor="#b21f1f" buttonTextColor="#fff" ease="power3.out" />
+      {/* FIX: We wrap your website content in a relative div with zIndex: 10 
+          so it sits safely ON TOP of the animated background! */}
+      <div style={{ position: 'relative', zIndex: 10 }}>
+        <CardNav
+          items={navItems}
+          baseColor="#ffffff"
+          menuColor="#1a2a6c"
+          buttonBgColor="#b21f1f"
+          buttonTextColor="#fff"
+          ease="power3.out"
+        />
+        
         <Header />
         <HeroSection />
         <AboutSection />
