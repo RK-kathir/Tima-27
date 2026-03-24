@@ -11,16 +11,16 @@ const App = () => {
   const navItems = [
     {
       label: "About",
-      bgColor: "#1a2a6c", // TIMA Primary Blue
+      bgColor: "#1a2a6c", 
       textColor: "#fff",
       links: [
         { label: "Conference Details", href: "#hero" },
-        { label: "Advisory Committee", href: "#about" } // Changed to scroll to about section
+        { label: "Advisory Committee", href: "#about" } 
       ]
     },
     {
       label: "Information", 
-      bgColor: "#1e3a8a", // Slightly lighter blue for depth
+      bgColor: "#1e3a8a", 
       textColor: "#fff",
       links: [
         { label: "Key Dates", href: "#about" },
@@ -29,7 +29,7 @@ const App = () => {
     },
     {
       label: "Contact",
-      bgColor: "#b21f1f", // TIMA Accent Red
+      bgColor: "#b21f1f", 
       textColor: "#fff",
       links: [
         { label: "Submit Paper", href: "#hero" },
@@ -41,24 +41,26 @@ const App = () => {
 
   return (
     <div className="app-container">
-      {/* 3D Animated Background - Stays behind everything */}
+      {/* 3D Background */}
       <FloatingBackground /> 
       
-      {/* GSAP Animated Dropdown Navigation */}
-      <CardNav
-        items={navItems}
-        baseColor="#ffffff"
-        menuColor="#1a2a6c"
-        buttonBgColor="#b21f1f"
-        buttonTextColor="#fff"
-        ease="power3.out"
-      />
-      
-      {/* Your Separated Layout Sections */}
-      <Header />
-      <HeroSection />
-      <AboutSection />
-      <Footer />
+      {/* FIX: We wrap your website content in a relative div with zIndex: 10 
+          so it sits safely ON TOP of the animated background! */}
+      <div style={{ position: 'relative', zIndex: 10 }}>
+        <CardNav
+          items={navItems}
+          baseColor="#ffffff"
+          menuColor="#1a2a6c"
+          buttonBgColor="#b21f1f"
+          buttonTextColor="#fff"
+          ease="power3.out"
+        />
+        
+        <Header />
+        <HeroSection />
+        <AboutSection />
+        <Footer />
+      </div>
     </div>
   );
 };
