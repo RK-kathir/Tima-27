@@ -241,12 +241,13 @@ export default function FloatingLines({
     camera.position.z = 1;
 
     // Enabled Alpha (transparency) so it floats over your website
-    const renderer = new WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.setClearColor(0x000000, 0); // Transparent canvas
-    renderer.domElement.style.width = '100%';
-    renderer.domElement.style.height = '100%';
-    container.appendChild(renderer.domElement);
+    const renderer = new WebGLRenderer({ 
+      antialias: false, // Disabling this saves massive GPU power
+      alpha: true,
+      powerPreference: "high-performance" // Tells the browser to optimize
+    });
+    // Force pixel ratio to 1 (Stops 4K rendering on laptops/phones)
+    renderer.setPixelRatio(1);
 
     const uniforms = {
       iTime: { value: 0 },
